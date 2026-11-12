@@ -5,9 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>VEYRO Designs | Websites voor kappers, barbershops en lokale ondernemers</title>
 <meta name="description" content="VEYRO Designs maakt moderne, professionele websites voor kappers, barbershops en lokale ondernemers.">
+<meta name="theme-color" content="#0b0c0f">
+<meta property="og:title" content="VEYRO Designs | Professionele websites">
+<meta property="og:description" content="Webdesign voor kappers, barbershops en lokale ondernemers.">
+<meta property="og:type" content="website">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%91%91%3C/text%3E%3C/svg%3E">
 <style>
-:root{--blk:#111111;--gold:#C5A46D;--cr:#F5F2EC;--gd:#8A6B33;--lbg:#F5F2EC;--lfg:#111111;--lmut:#5c574e;--card:#FFFFFF;--line:rgba(17,17,17,.14);
+:root{--blk:#0b0c0f;--gold:#D2B278;--cr:#F5F2EC;--gd:#8A6B33;--lbg:#F5F2EC;--lfg:#111111;--lmut:#5c574e;--card:#FFFFFF;--line:rgba(17,17,17,.14);
 --serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;--sans:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
 box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 @media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--lbg:#181818;--lfg:#F5F2EC;--lmut:#b5afa4;--card:#222222;--line:rgba(245,242,236,.16);--gd:#C5A46D}}
@@ -28,6 +32,7 @@ section{padding:clamp(4.5rem,10vw,8rem) 0}
 .lead{margin-top:1.2rem;max-width:58ch;color:var(--lmut)}
 .dark .lead{color:rgba(245,242,236,.72)}
 
+a.skip{position:absolute;top:-100px;left:1rem;z-index:100;background:var(--gold);color:var(--blk);padding:.6rem 1rem;border-radius:8px}a.skip:focus{top:1rem}
 /* header */
 header{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:rgba(17,17,17,.88);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid rgba(197,164,109,.22)}
 .bar{display:flex;align-items:center;justify-content:space-between;height:68px}
@@ -161,6 +166,7 @@ dialog::backdrop{background:rgba(0,0,0,.78)}
 .chan{list-style:none;margin:2rem auto 0;padding:0;display:flex;flex-wrap:wrap;justify-content:center;gap:.8rem}
 .chan a{display:inline-block;padding:.6rem 1.2rem;border:1px solid rgba(197,164,109,.5);border-radius:999px;text-decoration:none;color:var(--cr);font-size:.95rem;transition:background .25s}
 .chan a:hover{background:rgba(197,164,109,.15)}
+.contact-help{margin:1rem auto 0;max-width:50ch;color:rgba(245,242,236,.8);font-size:.95rem}
 .hint{margin:1.6rem auto 0;max-width:52ch;font-size:.95rem;color:rgba(245,242,236,.6)}
 .need{border:1px solid var(--line);background:var(--card);border-radius:20px;padding:1.8rem 2rem;margin-top:2.4rem}
 .need h3{font-size:1.5rem;margin-bottom:.8rem}
@@ -188,9 +194,58 @@ dialog::backdrop{background:rgba(0,0,0,.78)}
  *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
  .rv,.hero h1,.hero .sub,.cta{opacity:1;transform:none}
 }
+
+/* Uitgebreide portfolio met zes doorklikbare demo’s */
+.cards{grid-template-columns:repeat(3,minmax(0,1fr))}
+.portfolio-thumb{display:flex;flex-direction:column;min-height:250px;margin:12px;border-radius:13px;padding:17px 19px;background:var(--thumb-bg);color:var(--thumb-fg);text-decoration:none;overflow:hidden;position:relative;isolation:isolate}
+.portfolio-thumb::after{content:"";position:absolute;width:220px;height:220px;border:1px solid var(--thumb-accent);border-radius:50%;right:-72px;bottom:-80px;opacity:.5;z-index:-1;box-shadow:0 0 0 35px color-mix(in srgb,var(--thumb-accent) 9%,transparent),0 0 0 75px color-mix(in srgb,var(--thumb-accent) 5%,transparent)}
+.thumb-top{display:flex;justify-content:space-between;gap:10px;align-items:center;font-size:.56rem;letter-spacing:.13em}.thumb-top span{opacity:.55}.thumb-hero{margin:auto 0;display:flex;flex-direction:column;gap:12px;align-items:flex-start}.thumb-eyebrow{font-size:.56rem;letter-spacing:.19em;color:var(--thumb-accent)}.thumb-hero strong{font:500 clamp(1.5rem,2.4vw,2.2rem)/1.08 var(--serif);max-width:12ch}.thumb-pill{border:1px solid var(--thumb-accent);color:var(--thumb-accent);border-radius:30px;padding:7px 11px;font-size:.55rem;letter-spacing:.09em}.pcard .pbody{display:flex;flex-direction:column;align-items:flex-start;min-height:238px}.pcard .pbody p{flex:1}.pcard .demo{margin-top:18px}.portfolio-thumb:focus-visible{outline:3px solid var(--gold)}
+@media(max-width:900px){.cards{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:620px){.cards{grid-template-columns:1fr}.portfolio-thumb{min-height:270px}}
+.contact-form{max-width:720px;margin:2.4rem auto 0;padding:clamp(1.2rem,4vw,2.4rem);border:1px solid rgba(197,164,109,.38);border-radius:22px;background:#1b1b1b;text-align:left}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.15rem}
+.field{display:flex;flex-direction:column;gap:.35rem;margin-bottom:1.15rem}
+.field label{font-size:.95rem;font-weight:600;color:var(--cr)}
+.field input,.field select,.field textarea{width:100%;min-height:48px;padding:.8rem 1rem;border:1px solid rgba(245,242,236,.3);border-radius:10px;background:#111;color:var(--cr);font:inherit}
+.field textarea{min-height:135px;resize:vertical}
+.field input::placeholder,.field textarea::placeholder{color:#aaa49a}
+.field input:focus,.field select:focus,.field textarea:focus{outline:2px solid var(--gold);outline-offset:2px}
+.contact-form .btn{width:100%;margin-top:.3rem}
+.form-disclaimer{font-size:.83rem;color:rgba(245,242,236,.75);margin-top:1rem;line-height:1.5}
+.form-alt{margin-top:1.5rem;font-size:.95rem;color:rgba(245,242,236,.8)}
+
+@media(max-width:620px){.form-grid{grid-template-columns:1fr}}
+.hero::before{content:"";position:absolute;inset:-20%;background:radial-gradient(40% 40% at 70% 40%,rgba(210,178,120,.16),transparent 70%);animation:glow 12s ease-in-out infinite alternate;pointer-events:none}
+@keyframes glow{to{transform:translate(-6%,5%) scale(1.15)}}
+header{transition:background .3s,box-shadow .3s}header.scrolled{background:rgba(11,12,15,.96);box-shadow:0 10px 30px -18px #000}
+.btn{position:relative;overflow:hidden}.btn-gold:hover{box-shadow:0 10px 26px -10px rgba(210,178,120,.7)}
+.rv{transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}
+.studio{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:2rem;transition:transform .35s,box-shadow .35s}.studio:hover{transform:translateY(-4px);box-shadow:0 22px 50px -26px rgba(0,0,0,.45)}
+.studio h3{font-size:1.9rem;margin-bottom:.6rem}.studio p{color:var(--lmut)}
+.facts{list-style:none;padding:0;margin:1.6rem 0 0;display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;border-top:1px solid var(--line);padding-top:1.4rem}
+.facts b{display:block;font-family:var(--serif);font-size:2.4rem;font-weight:500;color:var(--gd);line-height:1}.facts span{font-size:.85rem;color:var(--lmut)}
+.plan .for{margin-top:.3rem;font-size:.95rem;opacity:.75}.plan .inc{font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gd);margin:0 0 .8rem}.plan.best .inc{color:var(--gold)}
+.plan.best{transform:translateY(-8px)}.plan.best:hover{transform:translateY(-14px)}
+.pcard .portfolio-thumb::after,.thumb-pill{transition:transform .6s ease}.pcard:hover .portfolio-thumb::after{transform:scale(1.18)}.pcard:hover .thumb-pill{transform:translateX(5px)}
+.own{display:flex;align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;margin-top:2rem;padding:1.8rem 2rem;border:1px dashed rgba(210,178,120,.5);border-radius:20px}.own h3{font-size:1.6rem;margin-bottom:.3rem}.own p{color:rgba(245,242,236,.7)}
+.video-box{margin-top:3rem;aspect-ratio:16/9;border:1px solid rgba(210,178,120,.35);border-radius:22px;overflow:hidden;background:linear-gradient(150deg,#1b1b1f,#0b0c0f)}
+.video-box video,.video-box iframe{width:100%;height:100%;border:0;display:block}
+.vph{height:100%;display:grid;place-content:center;justify-items:center;gap:1rem;color:rgba(245,242,236,.65);padding:1rem;text-align:center}
+.play{width:78px;height:78px;border-radius:50%;border:1.5px solid var(--gold);position:relative;animation:pulse 2.6s ease-out infinite}.play::after{content:"";position:absolute;left:31px;top:24px;border:15px solid transparent;border-left:22px solid var(--gold)}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(210,178,120,.4)}100%{box-shadow:0 0 0 26px transparent}}
+#formmsg{min-height:1.4em;margin:.2rem 0 .8rem;font-size:.95rem}#formmsg.ok{color:var(--gold)}
+@media(max-width:900px){.plan.best,.plan.best:hover{transform:none}.own{flex-direction:column;align-items:stretch}}
 </style>
+<noscript><style>.rv,.hero h1,.hero .sub,.cta{opacity:1!important;transform:none!important}
+/* Uitgebreide portfolio met zes doorklikbare demo’s */
+.cards{grid-template-columns:repeat(3,minmax(0,1fr))}
+.portfolio-thumb{display:flex;flex-direction:column;min-height:250px;margin:12px;border-radius:13px;padding:17px 19px;background:var(--thumb-bg);color:var(--thumb-fg);text-decoration:none;overflow:hidden;position:relative;isolation:isolate}
+.portfolio-thumb::after{content:"";position:absolute;width:220px;height:220px;border:1px solid var(--thumb-accent);border-radius:50%;right:-72px;bottom:-80px;opacity:.5;z-index:-1;box-shadow:0 0 0 35px color-mix(in srgb,var(--thumb-accent) 9%,transparent),0 0 0 75px color-mix(in srgb,var(--thumb-accent) 5%,transparent)}
+.thumb-top{display:flex;justify-content:space-between;gap:10px;align-items:center;font-size:.56rem;letter-spacing:.13em}.thumb-top span{opacity:.55}.thumb-hero{margin:auto 0;display:flex;flex-direction:column;gap:12px;align-items:flex-start}.thumb-eyebrow{font-size:.56rem;letter-spacing:.19em;color:var(--thumb-accent)}.thumb-hero strong{font:500 clamp(1.5rem,2.4vw,2.2rem)/1.08 var(--serif);max-width:12ch}.thumb-pill{border:1px solid var(--thumb-accent);color:var(--thumb-accent);border-radius:30px;padding:7px 11px;font-size:.55rem;letter-spacing:.09em}.pcard .pbody{display:flex;flex-direction:column;align-items:flex-start;min-height:238px}.pcard .pbody p{flex:1}.pcard .demo{margin-top:18px}.portfolio-thumb:focus-visible{outline:3px solid var(--gold)}
+@media(max-width:900px){.cards{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:620px){.cards{grid-template-columns:1fr}.portfolio-thumb{min-height:270px}}
+</style></noscript>
 </head>
 <body>
+<a class="skip" href="#home">Ga naar inhoud</a>
 
 <header>
  <div class="wrap bar">
@@ -224,16 +279,13 @@ dialog::backdrop{background:rgba(0,0,0,.78)}
 
 <section class="light" id="over-ons">
  <div class="wrap">
-  <h2 class="sec-h rv">Twee oprichters, één duidelijke visie.</h2>
+  <h2 class="sec-h rv">Eén studio, één duidelijke visie.</h2>
   <div class="about">
-   <div class="founders rv">
-    <div class="person"><div class="av" aria-hidden="true">F</div><div><h3>Faruk</h3><p>Medeoprichter, 16 jaar. Jong, leergierig en gedreven om mooie websites te maken.</p></div></div>
-    <div class="person"><div class="av" aria-hidden="true">I</div><div><h3>Ibis</h3><p>Medeoprichter. Samen met Faruk bouwt Ibis aan VEYRO Designs.</p></div></div>
-   </div>
+   <div class="studio rv"><h3>VEYRO Designs</h3><p>Een onafhankelijk webdesignstudio voor kappers, barbershops en lokale ondernemers. Wij ontwerpen en bouwen websites die er verzorgd uitzien, snel laden en klanten naar jouw deur brengen.</p><ul class="facts"><li><b>6</b><span>demo-concepten</span></li><li><b>3</b><span>heldere pakketten</span></li><li><b>1</b><span>vast aanspreekpunt</span></li></ul></div>
    <div class="pillars rv">
     <div><h3>AI-tools als hulpmiddel</h3><p>We gebruiken slimme AI-tools om sneller te werken en meer ideeën te verkennen, zodat jij sneller resultaat ziet.</p></div>
     <div><h3>Eigen ontwerp</h3><p>Elke website wordt door ons zelf vormgegeven en afgewerkt. Geen kant-en-klaar sjabloon, maar een stijl die bij jouw zaak past.</p></div>
-    <div><h3>Persoonlijke aandacht</h3><p>Je spreekt rechtstreeks met de oprichters. Korte lijnen, duidelijke afspraken en een website waar jij blij mee bent.</p></div>
+    <div><h3>Persoonlijke aandacht</h3><p>Je hebt direct contact met ons team. Korte lijnen, duidelijke afspraken en een website waar jij blij mee bent.</p></div>
    </div>
   </div>
  </div>
@@ -243,27 +295,7 @@ dialog::backdrop{background:rgba(0,0,0,.78)}
  <div class="wrap">
   <h2 class="sec-h rv">Diensten en prijzen</h2>
   <p class="lead rv">Kies het pakket dat bij jouw bedrijf past. Alle prijzen zijn vanafprijzen; de definitieve prijs bespreken we samen tijdens de kennismaking.</p>
-  <div class="plans">
-   <article class="plan rv">
-    <h3>Starter</h3>
-    <div class="price"><small>vanaf</small>€149</div>
-    <ul><li>1 pagina</li><li>Contactknop</li><li>1 correctieronde</li></ul>
-    <a class="btn btn-dk" href="#contact">Kies Starter</a>
-   </article>
-   <article class="plan best rv">
-    <span class="badge">Beste balans</span>
-    <h3>Business</h3>
-    <div class="price"><small>vanaf</small>€299</div>
-    <ul><li>Maximaal 5 pagina’s</li><li>Contactformulier</li><li>2 correctierondes</li></ul>
-    <a class="btn btn-gold" href="#contact">Kies Business</a>
-   </article>
-   <article class="plan rv">
-    <h3>Premium</h3>
-    <div class="price"><small>vanaf</small>€499</div>
-    <ul><li>Maximaal 8 pagina’s</li><li>Galerij</li><li>3 correctierondes</li></ul>
-    <a class="btn btn-dk" href="#contact">Kies Premium</a>
-   </article>
-  </div>
+  <div class="plans"><article class="plan rv"><h3>Starter</h3><p class="for">Snel en betaalbaar online staan.</p><div class="price"><small>vanaf</small>€150</div><p class="inc">Inbegrepen:</p><ul><li>1 pagina met alle essentiële info</li><li>Mobielvriendelijk ontwerp</li><li>Contactknop (mail, WhatsApp of bellen)</li><li>Basisinstellingen voor Google</li><li>1 correctieronde</li></ul><a class="btn btn-dk" href="#contact" data-plan="Starter — vanaf €150">Offerte aanvragen</a></article><article class="plan best rv"><span class="badge">Meest gekozen</span><h3>Business</h3><p class="for">Een complete website voor je bedrijf.</p><div class="price"><small>vanaf</small>€299</div><p class="inc">Alles uit Starter, plus:</p><ul><li>Tot 5 pagina’s</li><li>Werkend contactformulier</li><li>Openingstijden en locatie</li><li>Subtiele animaties</li><li>2 correctierondes</li></ul><a class="btn btn-gold" href="#contact" data-plan="Business — vanaf €299">Offerte aanvragen</a></article><article class="plan rv"><h3>Premium</h3><p class="for">Maximale uitstraling en ruimte voor beeld.</p><div class="price"><small>vanaf</small>€500</div><p class="inc">Alles uit Business, plus:</p><ul><li>Tot 8 pagina’s</li><li>Fotogalerij</li><li>Ruimte voor een promotievideo</li><li>Offerte- of afspraakaanvraag op maat</li><li>3 correctierondes</li></ul><a class="btn btn-dk" href="#contact" data-plan="Premium — vanaf €500">Offerte aanvragen</a></article></div>
   <div class="extras">
    <div class="note rv"><h3>Onderhoud (optioneel)</h3><p>Wil je dat wij je website bijhouden? Dat kan vanaf €20 per maand.</p></div>
    <div class="note rv"><h3>Wat niet is inbegrepen</h3><p>Domeinnaam, hosting en extra diensten zijn niet inbegrepen. Daar maken we vooraf duidelijke afspraken over.</p></div>
@@ -274,24 +306,20 @@ dialog::backdrop{background:rgba(0,0,0,.78)}
 <section class="dark" id="portfolio">
  <div class="wrap">
   <h2 class="sec-h rv">Portfolio</h2>
-  <p class="lead rv">We zijn net gestart. Hieronder zie je conceptprojecten: voorbeelden van de stijl en opbouw die we kunnen maken. Het zijn geen bestaande klanten.</p>
-  <div class="cards">
-   <article class="pcard rv">
-    <div class="mock m1" aria-hidden="true"><div class="nv i"><b></b><b></b><b></b></div><i class="t1"></i><i class="t2"></i><i class="bt"></i></div>
-    <div class="pbody"><span class="tag">Conceptproject</span><h3>Barbershop</h3><p>Donker, stoer en strak, met ruimte voor diensten, prijzen en een afspraakknop.</p><button class="btn btn-line demo" data-demo="barber">Bekijk het concept</button></div>
-   </article>
-   <article class="pcard rv">
-    <div class="mock m2" aria-hidden="true"><div class="nv i"><b></b><b></b><b></b></div><i class="t1"></i><i class="t2"></i><i class="bt"></i></div>
-    <div class="pbody"><span class="tag">Conceptproject</span><h3>Kapsalon</h3><p>Warm en verzorgd, met een galerij voor knip-, kleur- en stylingwerk.</p><button class="btn btn-line demo" data-demo="salon">Bekijk het concept</button></div>
-   </article>
-   <article class="pcard rv">
-    <div class="mock m3" aria-hidden="true"><div class="nv i"><b></b><b></b><b></b></div><i class="t1"></i><i class="t2"></i><i class="bt"></i></div>
-    <div class="pbody"><span class="tag">Conceptproject</span><h3>Lokale ondernemer</h3><p>Overzichtelijk en betrouwbaar, met openingstijden, aanbod en contact op één plek.</p><button class="btn btn-line demo" data-demo="local">Bekijk het concept</button></div>
-   </article>
-  </div>
-  <p class="fine">De concepten zijn voorbeelden die wij zelf hebben gemaakt, met verzonnen namen en voorbeeldteksten. Echte klantprojecten volgen zodra ze er zijn.</p>
+  <p class="lead rv">Ontdek zes verschillende websiteconcepten. Klik op een project om een uitgebreide voorbeeldwebsite te bekijken. Dit zijn geen bestaande klanten.</p>
+     <div class="cards">
+<article class="pcard rv"><a class="portfolio-thumb" href="demos/barbershop.html" aria-label="Bekijk demo Barbershop" style="--thumb-bg:#111111;--thumb-accent:#e4c38b;--thumb-fg:#f7f1e7"><span class="thumb-top"><b>NOIR BARBER</b><span>MENU &nbsp; · &nbsp; CONTACT</span></span><span class="thumb-hero"><span class="thumb-eyebrow">CONCEPT / BARBERSHOP</span><strong>Precision in every detail.</strong><span class="thumb-pill">ONTDEK MEER ↗</span></span></a><div class="pbody"><span class="tag">Demo · fictief concept</span><h3>Barbershop</h3><p>Donker, strak en premium. Een premium barbershopconcept met diensten, openingstijden en een duidelijke route naar reserveren.</p><a class="btn btn-line demo" href="demos/barbershop.html">Bekijk volledige demo ↗</a></div></article>
+<article class="pcard rv"><a class="portfolio-thumb" href="demos/kapsalon.html" aria-label="Bekijk demo Kapsalon" style="--thumb-bg:#f2e8dc;--thumb-accent:#503b32;--thumb-fg:#fffaf4"><span class="thumb-top"><b>ATELIER HAIR</b><span>MENU &nbsp; · &nbsp; CONTACT</span></span><span class="thumb-hero"><span class="thumb-eyebrow">CONCEPT / KAPSALON</span><strong>Your hair, your statement.</strong><span class="thumb-pill">ONTDEK MEER ↗</span></span></a><div class="pbody"><span class="tag">Demo · fictief concept</span><h3>Kapsalon</h3><p>Zacht, elegant en editorial. Een verfijnd salonconcept met een elegante uitstraling en ruimte voor een lookbook.</p><a class="btn btn-line demo" href="demos/kapsalon.html">Bekijk volledige demo ↗</a></div></article>
+<article class="pcard rv"><a class="portfolio-thumb" href="demos/restaurant.html" aria-label="Bekijk demo Restaurant" style="--thumb-bg:#201913;--thumb-accent:#d8ad73;--thumb-fg:#f9f0e4"><span class="thumb-top"><b>EMBER TABLE</b><span>MENU &nbsp; · &nbsp; CONTACT</span></span><span class="thumb-hero"><span class="thumb-eyebrow">CONCEPT / RESTAURANT</span><strong>An evening worth remembering.</strong><span class="thumb-pill">ONTDEK MEER ↗</span></span></a><div class="pbody"><span class="tag">Demo · fictief concept</span><h3>Restaurant</h3><p>Warm, gastronomisch en sfeervol. Een sfeervolle restaurantsite met menukaart, sfeerbeelden en reserveringsinformatie.</p><a class="btn btn-line demo" href="demos/restaurant.html">Bekijk volledige demo ↗</a></div></article>
+<article class="pcard rv"><a class="portfolio-thumb" href="demos/personal-trainer.html" aria-label="Bekijk demo Personal trainer" style="--thumb-bg:#111b20;--thumb-accent:#b9f264;--thumb-fg:#f4f8f4"><span class="thumb-top"><b>FORM COACHING</b><span>MENU &nbsp; · &nbsp; CONTACT</span></span><span class="thumb-hero"><span class="thumb-eyebrow">CONCEPT / PERSONAL TRAINER</span><strong>Build strength. Find balance.</strong><span class="thumb-pill">ONTDEK MEER ↗</span></span></a><div class="pbody"><span class="tag">Demo · fictief concept</span><h3>Personal trainer</h3><p>Sportief, energiek en modern. Een krachtige coachesite met trajecten, trainingsfilosofie en een intake-aanvraag.</p><a class="btn btn-line demo" href="demos/personal-trainer.html">Bekijk volledige demo ↗</a></div></article>
+<article class="pcard rv"><a class="portfolio-thumb" href="demos/autodetailing.html" aria-label="Bekijk demo Autodetailing" style="--thumb-bg:#0c1118;--thumb-accent:#a9c1d2;--thumb-fg:#eef4f8"><span class="thumb-top"><b>OBSIDIAN AUTO</b><span>MENU &nbsp; · &nbsp; CONTACT</span></span><span class="thumb-hero"><span class="thumb-eyebrow">CONCEPT / AUTODETAILING</span><strong>Every finish tells a story.</strong><span class="thumb-pill">ONTDEK MEER ↗</span></span></a><div class="pbody"><span class="tag">Demo · fictief concept</span><h3>Autodetailing</h3><p>Donker, technisch en exclusief. Een hoogwaardige detailingwebsite met behandelingen en een heldere offerte-aanvraag.</p><a class="btn btn-line demo" href="demos/autodetailing.html">Bekijk volledige demo ↗</a></div></article>
+<article class="pcard rv"><a class="portfolio-thumb" href="demos/schoonmaak.html" aria-label="Bekijk demo Schoonmaakbedrijf" style="--thumb-bg:#edf5f8;--thumb-accent:#146782;--thumb-fg:#ffffff"><span class="thumb-top"><b>CLEARSPACE</b><span>MENU &nbsp; · &nbsp; CONTACT</span></span><span class="thumb-hero"><span class="thumb-eyebrow">CONCEPT / SCHOONMAAKBEDRIJF</span><strong>A fresh space. A better day.</strong><span class="thumb-pill">ONTDEK MEER ↗</span></span></a><div class="pbody"><span class="tag">Demo · fictief concept</span><h3>Schoonmaakbedrijf</h3><p>Fris, licht en betrouwbaar. Een toegankelijke dienstensite met een rustige uitstraling en een offerteknop.</p><a class="btn btn-line demo" href="demos/schoonmaak.html">Bekijk volledige demo ↗</a></div></article>
+   </div>
+<p class="fine">Alle zes projecten zijn fictieve ontwerpen ter illustratie. De namen, teksten en afbeeldingen zijn voorbeelden; er zijn nog geen echte klanten of actieve reserveringssystemen.</p><div class="own rv"><div><h3>Jouw project hier?</h3><p>Dit is plek voor jouw website. Vertel ons over je bedrijf en ontvang een vrijblijvende offerte.</p></div><a class="btn btn-gold" href="#contact">Start jouw project</a></div>
  </div>
 </section>
+
+<section class="dark" id="video" style="padding-top:0"><div class="wrap"><h2 class="sec-h rv">Zie hoe wij werken</h2><p class="lead rv">Een korte kijk op onze aanpak en een demonstratie van een website.</p><div class="video-box rv" id="videobox"><div class="vph"><span class="play" aria-hidden="true"></span><p>Onze promotievideo komt hier binnenkort te staan.</p></div></div></div></section>
 
 <section class="light" id="werkwijze">
  <div class="wrap">
@@ -313,7 +341,7 @@ dialog::backdrop{background:rgba(0,0,0,.78)}
  <div class="wrap">
   <h2 class="sec-h rv">Veelgestelde vragen</h2>
   <div class="faq rv">
-   <details><summary>Wat kost een website?</summary><p>Onze pakketten starten vanaf €149 (Starter), €299 (Business) en €499 (Premium). Onderhoud is optioneel vanaf €20 per maand. Domein, hosting en extra diensten zijn niet inbegrepen.</p></details>
+   <details><summary>Wat kost een website?</summary><p>Onze pakketten starten vanaf €150 (Starter), €299 (Business) en €500 (Premium). Onderhoud is optioneel vanaf €20 per maand. Domein, hosting en extra diensten zijn niet inbegrepen.</p></details>
    <details><summary>Hoe lang duurt het voordat mijn website klaar is?</summary><p>Dat hangt af van het pakket en hoe snel je teksten en foto’s aanlevert. Tijdens de kennismaking spreken we een realistische planning met je af.</p></details>
    <details><summary>Moet ik zelf hosting regelen?</summary><p>Ja, hosting en een domeinnaam zijn niet inbegrepen. We denken graag met je mee over een goede en betaalbare oplossing.</p></details>
    <details><summary>Kan ik later nog aanpassingen laten doen?</summary><p>Binnen je pakket zitten 1 tot 3 correctierondes. Wil je daarna iets laten aanpassen of bijhouden, dan kan dat via een onderhoudsabonnement of in overleg.</p></details>
@@ -325,51 +353,44 @@ dialog::backdrop{background:rgba(0,0,0,.78)}
 <section class="dark contact" id="contact">
  <div class="wrap">
   <h2 class="sec-h rv">Klaar voor een website die past bij jouw bedrijf?</h2>
-  <p class="lead rv">Stuur ons een e-mail met wat je zoekt. We nemen contact met je op voor een vrijblijvende kennismaking.</p>
+  <p class="lead rv">Vertel ons wat je zoekt. We nemen contact met je op voor een vrijblijvende kennismaking.</p>
   <!-- Vul hieronder je e-mailadres in, bijvoorbeeld: const CONTACT_EMAIL = "naam@voorbeeld.nl"; -->
-  <a class="btn btn-gold rv" id="mailbtn" href="#contact">Vraag een website aan</a>
-  <p id="mailmsg" role="status" aria-live="polite"></p>
+  <form class="contact-form rv" action="https://formsubmit.co/veyrodesigns.nl@gmail.com" method="POST">
+   <input type="hidden" name="_subject" value="Nieuwe websiteaanvraag — VEYRO Designs">
+   <input type="hidden" name="_template" value="table">
+   <input type="hidden" name="_captcha" value="true">
+   <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
+   <div class="form-grid">
+    <div class="field"><label for="aanvraag-naam">Naam *</label><input id="aanvraag-naam" name="Naam" autocomplete="name" required maxlength="100" placeholder="Jouw naam"></div>
+    <div class="field"><label for="aanvraag-email">E-mailadres *</label><input id="aanvraag-email" name="email" type="email" autocomplete="email" required maxlength="200" placeholder="naam@bedrijf.nl"></div>
+   </div>
+   <div class="form-grid">
+    <div class="field"><label for="aanvraag-bedrijf">Bedrijfsnaam</label><input id="aanvraag-bedrijf" name="Bedrijfsnaam" autocomplete="organization" maxlength="120" placeholder="Naam van je bedrijf"></div>
+    <div class="field"><label for="aanvraag-pakket">Gewenst pakket *</label><select id="aanvraag-pakket" name="Gewenst pakket" required><option value="" selected disabled>Kies een pakket</option><option>Starter — vanaf €150</option><option>Business — vanaf €299</option><option>Premium — vanaf €500</option><option>Weet ik nog niet</option></select></div>
+   </div>
+   <div class="field"><label for="aanvraag-bericht">Wat voor website zoek je? *</label><textarea id="aanvraag-bericht" name="Bericht" required maxlength="3000" placeholder="Vertel kort over je bedrijf en wensen..."></textarea></div>
+   <p id="formmsg" role="status" aria-live="polite"></p><button class="btn btn-gold" type="submit">Verstuur mijn aanvraag</button>
+   <p class="form-disclaimer">* Verplicht. Je gegevens worden via de externe formulierdienst FormSubmit naar VEYRO Designs verzonden en alleen gebruikt om je aanvraag te beantwoorden. Stuur geen gevoelige gegevens mee. Na het versturen zie je hier direct een bevestiging.</p>
+  </form>
+  <p class="form-alt">Liever rechtstreeks mailen? <a href="mailto:veyrodesigns.nl@gmail.com?subject=Websiteaanvraag%20VEYRO%20Designs">veyrodesigns.nl@gmail.com</a></p>
   <ul class="chan" id="chan"></ul>
-  <p class="hint">Vertel ons in je bericht kort wat voor bedrijf je hebt, welk pakket je interesse heeft en of je al een logo of foto’s hebt.</p>
  </div>
 </section>
 </main>
 
 <footer>
- <div class="wrap"><span>© 2026 VEYRO Designs</span><span>Websites voor lokale ondernemers</span></div>
+ <div class="wrap"><span>© 2026 VEYRO Designs</span><span>Websites voor lokale ondernemers · Conceptprojecten zijn geen klantopdrachten</span></div>
 </footer>
 
-<dialog id="demo" aria-label="Conceptvoorbeeld"><div class="dhead"><span class="tag">Conceptproject</span><span id="dtitle"></span><button class="btn btn-line" id="dclose">Sluiten</button></div><div id="dbody"></div></dialog>
+
 
 <script>
 // Vul hier later je gegevens in. Lege velden worden niet getoond.
-const CONTACT_EMAIL = "";
+const CONTACT_EMAIL = "veyrodesigns.nl@gmail.com"; // VUL HIER JULLIE ZAKELIJKE E-MAILADRES IN, bijvoorbeeld "contact@jouwdomein.nl"
+// Video: zet hier je bestand (bijv. "assets/promo.mp4") of een YouTube-ID neer.
+const VIDEO_MP4 = "";
+const VIDEO_YOUTUBE = "";
 const CONTACT_EXTRA = {whatsapp:"",instagram:"",telefoon:""}; // whatsapp: 31612345678 (zonder +), instagram: gebruikersnaam, telefoon: +31612345678
-
-(function(){
- var D={
-  barber:{n:'Barbershop',bg:'#0d0d0d',fg:'#F5F2EC',ac:'#C5A46D',h:'Strak geknipt. Scherp afgewerkt.',p:'Voorbeeldtekst: een rustige plek voor een knipbeurt, baardverzorging en een vers scheermes.',s:[['Knippen','Klassiek of modern, naar jouw wens.'],['Baard trimmen','Strakke lijnen en een verzorgde finish.'],['Knippen en baard','De complete beurt in één afspraak.']]},
-  salon:{n:'Kapsalon',bg:'#2a2216',fg:'#F5F2EC',ac:'#d9b97f',h:'Haar waar jij je goed bij voelt.',p:'Voorbeeldtekst: persoonlijke aandacht voor knippen, kleuren en stylen in een warme sfeer.',s:[['Knippen en föhnen','Advies op maat voor jouw haartype.'],['Kleuren','Van subtiele highlights tot een volledige verandering.'],['Stylen','Voor een bijzondere dag of gewoon voor jezelf.']]},
-  local:{n:'Lokale ondernemer',bg:'#F5F2EC',fg:'#111111',ac:'#8A6B33',h:'Alles over jouw bedrijf, overzichtelijk bij elkaar.',p:'Voorbeeldtekst: wie je bent, wat je doet en hoe klanten je snel kunnen bereiken.',s:[['Ons aanbod','Een duidelijk overzicht van wat je levert.'],['Openingstijden','Altijd actueel en snel te vinden.'],['Contact','Bellen, mailen of langskomen: alles op één plek.']]}
- };
- var dlg=document.getElementById('demo');
- document.querySelectorAll('.demo').forEach(function(b){b.addEventListener('click',function(){
-  var d=D[b.dataset.demo];
-  document.getElementById('dtitle').textContent='Voorbeeldwebsite: '+d.n+' (geen echte klant)';
-  var g=d.s.map(function(x){return '<div><h5>'+x[0]+'</h5><p>'+x[1]+'</p></div>'}).join('');
-  document.getElementById('dbody').innerHTML='<div class="dm" style="--bg:'+d.bg+';--fg:'+d.fg+';--ac:'+d.ac+'"><nav><b>VOORBEELD</b><span>Diensten · Galerij · Contact</span></nav><div class="dh"><h4>'+d.h+'</h4><p>'+d.p+'</p><span class="db">Maak een afspraak</span></div><div class="dg">'+g+'</div><div class="ph"><i></i><i></i><i></i></div><div class="df">Dit is een conceptontwerp van VEYRO Designs. Namen en teksten zijn voorbeelden.</div></div>';
-  dlg.showModal();document.getElementById('dbody').scrollTop=0;
- })});
- document.getElementById('dclose').addEventListener('click',function(){dlg.close()});
- dlg.addEventListener('click',function(e){if(e.target===dlg)dlg.close()});
-
- var ch=document.getElementById('chan'),L=[];
- if(CONTACT_EMAIL)L.push(['E-mail',CONTACT_EMAIL,'mailto:'+CONTACT_EMAIL]);
- if(CONTACT_EXTRA.whatsapp)L.push(['WhatsApp','Stuur een bericht','https://wa.me/'+CONTACT_EXTRA.whatsapp]);
- if(CONTACT_EXTRA.instagram)L.push(['Instagram','@'+CONTACT_EXTRA.instagram,'https://instagram.com/'+CONTACT_EXTRA.instagram]);
- if(CONTACT_EXTRA.telefoon)L.push(['Bellen',CONTACT_EXTRA.telefoon,'tel:'+CONTACT_EXTRA.telefoon]);
- L.forEach(function(x){var li=document.createElement('li'),a=document.createElement('a');a.href=x[2];a.textContent=x[0]+': '+x[1];li.appendChild(a);ch.appendChild(li)});
-})();
 
 (function(){
  var burger=document.querySelector('.burger'),nav=document.getElementById('menu');
@@ -378,13 +399,27 @@ const CONTACT_EXTRA = {whatsapp:"",instagram:"",telefoon:""}; // whatsapp: 31612
  nav.addEventListener('click',function(e){if(e.target.tagName==='A')toggle(false)});
  document.addEventListener('keydown',function(e){if(e.key==='Escape')toggle(false)});
 
- var btn=document.getElementById('mailbtn'),msg=document.getElementById('mailmsg');
- if(CONTACT_EMAIL){
-  btn.href='mailto:'+CONTACT_EMAIL+'?subject='+encodeURIComponent('Website aanvragen bij VEYRO Designs');
- }else{
-  btn.addEventListener('click',function(e){e.preventDefault();msg.textContent='Ons e-mailadres wordt binnenkort toegevoegd.'});
- }
-
+ var ch=document.getElementById('chan'),L=[];
+ if(CONTACT_EMAIL)L.push(['E-mail',CONTACT_EMAIL,'mailto:'+CONTACT_EMAIL]);
+ if(CONTACT_EXTRA.whatsapp)L.push(['WhatsApp','Stuur een bericht','https://wa.me/'+CONTACT_EXTRA.whatsapp]);
+ if(CONTACT_EXTRA.instagram)L.push(['Instagram','@'+CONTACT_EXTRA.instagram,'https://instagram.com/'+CONTACT_EXTRA.instagram]);
+ if(CONTACT_EXTRA.telefoon)L.push(['Bellen',CONTACT_EXTRA.telefoon,'tel:'+CONTACT_EXTRA.telefoon]);
+ L.forEach(function(x){var li=document.createElement('li'),a=document.createElement('a');a.href=x[2];a.textContent=x[0]+': '+x[1];li.appendChild(a);ch.appendChild(li)});
+ var f=document.querySelector('.contact-form'),st=document.getElementById('formmsg'),sel=document.getElementById('aanvraag-pakket');
+ document.querySelectorAll('[data-plan]').forEach(function(a){a.addEventListener('click',function(){if(sel)sel.value=a.dataset.plan})});
+ f.addEventListener('submit',function(e){
+  if(f._honey&&f._honey.value){e.preventDefault();return}
+  e.preventDefault();var b=f.querySelector('button[type=submit]');b.disabled=true;b.textContent='Versturen…';st.className='';st.textContent='';
+  var d={};new FormData(f).forEach(function(v,k){if(k!=='_honey'&&k!=='_captcha')d[k]=v});
+  fetch('https://formsubmit.co/ajax/'+CONTACT_EMAIL,{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify(d)})
+  .then(function(r){return r.json()}).then(function(j){
+   if(j.success===true||j.success==='true'){f.reset();b.disabled=false;b.textContent='Verstuur mijn aanvraag';st.className='ok';st.textContent='Bedankt! Je aanvraag is verzonden. We reageren zo snel mogelijk.'}else{throw 0}})
+  .catch(function(){f.submit()});
+ });
+ var vb=document.getElementById('videobox');
+ if(typeof VIDEO_MP4!=='undefined'&&VIDEO_MP4){vb.innerHTML='<video controls playsinline preload="metadata" src="'+VIDEO_MP4+'"></video>'}
+ else if(typeof VIDEO_YOUTUBE!=='undefined'&&VIDEO_YOUTUBE){vb.innerHTML='<iframe src="https://www.youtube-nocookie.com/embed/'+VIDEO_YOUTUBE+'" title="VEYRO Designs video" allow="encrypted-media;picture-in-picture" allowfullscreen loading="lazy"></iframe>'}
+ var hd=document.querySelector('header');function sc(){hd.classList.toggle('scrolled',window.scrollY>20)}sc();window.addEventListener('scroll',sc,{passive:true});
  var els=document.querySelectorAll('.rv');
  if('IntersectionObserver' in window){
   var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}})},{threshold:.12});
