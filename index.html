@@ -96,6 +96,9 @@ nav a:hover{color:var(--gold)}
 .note h3{font-size:1.4rem;margin-bottom:.4rem}.note p{color:var(--lmut)}
 
 /* portfolio */
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;margin-top:3.2rem}
+.pcard{background:#1a1a1a;border:1px solid rgba(197,164,109,.25);border-radius:22px;overflow:hidden;transition:transform .35s,border-color .35s}
+.pcard:hover{transform:translateY(-6px);border-color:var(--gold)}
 .mock{aspect-ratio:4/3;margin:1rem;border-radius:14px;padding:.8rem;display:flex;flex-direction:column;gap:.5rem;position:relative}
 .mock i{display:block;border-radius:4px;background:rgba(255,255,255,.18)}
 .mock .nv{height:8px;width:100%;display:flex;gap:6px;background:none}
@@ -106,6 +109,10 @@ nav a:hover{color:var(--gold)}
 .m1{background:linear-gradient(150deg,#2a2a2a,#0d0d0d)}
 .m2{background:linear-gradient(150deg,#6b5636,#2a2216)}
 .m3{background:linear-gradient(150deg,#3b3a36,#161513)}
+.pbody{padding:.4rem 1.6rem 1.8rem}
+.tag{display:inline-block;font-size:.78rem;padding:.22rem .75rem;border:1px solid var(--gold);color:var(--gold);border-radius:999px;margin-bottom:.8rem}
+.pbody h3{font-size:1.5rem;margin-bottom:.4rem}
+.pbody p{color:rgba(245,242,236,.7);font-size:.97rem}
 .fine{margin-top:1.8rem;font-size:.92rem;color:rgba(245,242,236,.6)}
 
 /* werkwijze */
@@ -188,7 +195,12 @@ dialog::backdrop{background:rgba(0,0,0,.78)}
  .rv,.hero h1,.hero .sub,.cta{opacity:1;transform:none}
 }
 
-/* Uitgebreide portfolio met zes doorklikbare demo’s */
+/* Uitgebreide portfolio met drie doorklikbare demo’s */
+.cards{grid-template-columns:repeat(3,minmax(0,1fr))}
+.portfolio-thumb{display:flex;flex-direction:column;min-height:250px;margin:12px;border-radius:13px;padding:17px 19px;background:var(--thumb-bg);color:var(--thumb-fg);text-decoration:none;overflow:hidden;position:relative;isolation:isolate}
+.portfolio-thumb::after{content:"";position:absolute;width:220px;height:220px;border:1px solid var(--thumb-accent);border-radius:50%;right:-72px;bottom:-80px;opacity:.5;z-index:-1;box-shadow:0 0 0 35px color-mix(in srgb,var(--thumb-accent) 9%,transparent),0 0 0 75px color-mix(in srgb,var(--thumb-accent) 5%,transparent)}
+.thumb-top{display:flex;justify-content:space-between;gap:10px;align-items:center;font-size:.56rem;letter-spacing:.13em}.thumb-top span{opacity:.55}.thumb-hero{margin:auto 0;display:flex;flex-direction:column;gap:12px;align-items:flex-start}.thumb-eyebrow{font-size:.56rem;letter-spacing:.19em;color:var(--thumb-accent)}.thumb-hero strong{font:500 clamp(1.5rem,2.4vw,2.2rem)/1.08 var(--serif);max-width:12ch}.thumb-pill{border:1px solid var(--thumb-accent);color:var(--thumb-accent);border-radius:30px;padding:7px 11px;font-size:.55rem;letter-spacing:.09em}.pcard .pbody{display:flex;flex-direction:column;align-items:flex-start;min-height:238px}.pcard .pbody p{flex:1}.pcard .demo{margin-top:18px}.portfolio-thumb:focus-visible{outline:3px solid var(--gold)}
+@media(max-width:900px){.cards{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:620px){.cards{grid-template-columns:1fr}.portfolio-thumb{min-height:270px}}
 .contact-form{max-width:720px;margin:2.4rem auto 0;padding:clamp(1.2rem,4vw,2.4rem);border:1px solid rgba(197,164,109,.38);border-radius:22px;background:#1b1b1b;text-align:left}
 .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.15rem}
 .field{display:flex;flex-direction:column;gap:.35rem;margin-bottom:1.15rem}
@@ -213,6 +225,7 @@ header{transition:background .3s,box-shadow .3s}header.scrolled{background:rgba(
 .facts b{display:block;font-family:var(--serif);font-size:2.4rem;font-weight:500;color:var(--gd);line-height:1}.facts span{font-size:.85rem;color:var(--lmut)}
 .plan .for{margin-top:.3rem;font-size:.95rem;opacity:.75}.plan .inc{font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gd);margin:0 0 .8rem}.plan.best .inc{color:var(--gold)}
 .plan.best{transform:translateY(-8px)}.plan.best:hover{transform:translateY(-14px)}
+.pcard .portfolio-thumb::after,.thumb-pill{transition:transform .6s ease}.pcard:hover .portfolio-thumb::after{transform:scale(1.18)}.pcard:hover .thumb-pill{transform:translateX(5px)}
 .own{display:flex;align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;margin-top:2rem;padding:1.8rem 2rem;border:1px dashed rgba(210,178,120,.5);border-radius:20px}.own h3{font-size:1.6rem;margin-bottom:.3rem}.own p{color:rgba(245,242,236,.7)}
 .video-box{margin-top:3rem;aspect-ratio:16/9;border:1px solid rgba(210,178,120,.35);border-radius:22px;overflow:hidden;background:linear-gradient(150deg,#1b1b1f,#0b0c0f)}
 .video-box video,.video-box iframe{width:100%;height:100%;border:0;display:block}
@@ -222,65 +235,22 @@ header{transition:background .3s,box-shadow .3s}header.scrolled{background:rgba(
 #formmsg{min-height:1.4em;margin:.2rem 0 .8rem;font-size:.95rem}#formmsg.ok{color:var(--gold)}
 @media(max-width:900px){.plan.best,.plan.best:hover{transform:none}.own{flex-direction:column;align-items:stretch}}
 
-
-.pw{position:relative;overflow-x:clip;padding:clamp(5rem,11vw,10rem) 0 clamp(4rem,8vw,7rem)}
-.pw::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.07;mix-blend-mode:multiply;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .55 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>")}
-.pw::after{content:"";position:absolute;inset:-15%;pointer-events:none;background:radial-gradient(34% 26% at 18% 14%,rgba(210,178,120,.26),transparent 70%),radial-gradient(30% 24% at 84% 62%,rgba(210,178,120,.18),transparent 70%);animation:pwd 24s ease-in-out infinite alternate}
-@keyframes pwd{to{transform:translate(4%,6%) scale(1.12)}}
-.pw-wrap{position:relative;z-index:1;width:min(1360px,100% - 2*clamp(1.2rem,4vw,3rem));margin:0 auto}
-.pw-eyebrow{font-size:.78rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gd);margin:0 0 1.6rem}
-.pw-title{font-family:var(--serif);font-weight:400;font-size:clamp(3.4rem,11.5vw,10.5rem);line-height:.92;letter-spacing:-.045em;margin:0}
-.pw-w{display:inline-block;overflow:hidden;padding:.05em .06em .12em;vertical-align:top}.pw-w>span{display:inline-block}.pw-title em{color:var(--gd)}
-.pw-sub{display:flex;justify-content:space-between;align-items:flex-end;gap:2rem;flex-wrap:wrap;margin-top:clamp(1.6rem,4vw,2.6rem);padding-top:1.5rem;border-top:1px solid var(--line)}
-.pw-lead{max-width:46ch;color:var(--lmut);margin:0}.pw-count{display:flex;align-items:center;gap:1rem;margin:0;font-size:.85rem;color:var(--lmut);line-height:1.4}.pw-count b{font:400 clamp(3rem,6vw,4.6rem)/1 var(--serif);color:var(--lfg)}
-.pw-list{margin-top:clamp(3rem,7vw,6rem);display:grid;gap:clamp(2.5rem,7vw,5rem)}
-.pw-card{position:relative}
-.pw-in{position:relative;display:flex;flex-direction:column;background:var(--card);border:1px solid var(--line);border-radius:30px;overflow:hidden;box-shadow:0 50px 100px -55px rgba(17,17,17,.55)}
-.pw-dim{position:absolute;inset:0;z-index:6;background:#0b0c0f;opacity:0;pointer-events:none}
-.pw-info{display:flex;flex-direction:column;justify-content:space-between;gap:2rem;padding:clamp(1.5rem,3vw,3rem)}
-.pw-top{display:flex;justify-content:space-between;align-items:center;gap:1rem}
-.pw-no{font:400 2.6rem/1 var(--serif);color:var(--lfg)}.pw-no small{font-size:1rem;color:var(--lmut);margin-left:.2rem}
-.pw-cat{font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;padding:.4rem .9rem;border:1px solid var(--gd);border-radius:999px;color:var(--gd)}
-.pw-info h3{font:400 clamp(2.4rem,4.4vw,4.4rem)/.95 var(--serif);letter-spacing:-.035em;margin:0 0 .7rem}
-.pw-line{font:italic 400 1.35rem/1.25 var(--serif);color:var(--gd);margin:0 0 1.1rem}
-.pw-style{font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;margin:0 0 .5rem;color:var(--lfg)}.pw-desc{color:var(--lmut);margin:0;max-width:40ch}
-.pw-foot{display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap}
-.pw-demo{font-size:.78rem;color:var(--lmut);display:inline-flex;align-items:center;gap:.5rem}.pw-demo::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--gd);animation:pwp 2.4s ease-in-out infinite}
-@keyframes pwp{50%{opacity:.25;transform:scale(1.6)}}
-.pw-btn{display:inline-flex;align-items:center;gap:.7rem;padding:.95rem 1.5rem;border-radius:999px;background:var(--blk);color:var(--cr);text-decoration:none;font-weight:600;transition:background .4s,color .4s,transform .4s}
-.pw-btn i{font-style:normal;transition:transform .4s}.pw-btn:hover,.pw-card:hover .pw-btn{background:var(--gold);color:#111}.pw-btn:hover i,.pw-card:hover .pw-btn i{transform:translate(3px,-3px)}
-.pw-stage{position:relative;overflow:hidden;display:grid;place-items:center;padding:clamp(1.1rem,3vw,2.8rem);background:var(--bg);background:linear-gradient(140deg,var(--bg),color-mix(in srgb,var(--ac) 40%,var(--bg)))}
-.pw-stage::after{content:"";position:absolute;inset:0;pointer-events:none;z-index:3;opacity:0;transition:opacity .6s;background:radial-gradient(440px circle at var(--mx,70%) var(--my,30%),rgba(255,255,255,.26),transparent 62%)}
-.pw-card:hover .pw-stage::after{opacity:1}
-.pw-orb{position:absolute;border-radius:50%;background:var(--ac);filter:blur(56px);opacity:.38;animation:pwf 15s ease-in-out infinite alternate}
-.o1{width:340px;height:340px;left:-90px;top:-90px}.o2{width:300px;height:300px;right:-70px;bottom:-100px;animation-delay:-7s}
-@keyframes pwf{to{transform:translate(40px,34px) scale(1.2)}}
-.pw-par{position:relative;z-index:2;width:100%}
-.pw-frame{width:100%;border-radius:16px;overflow:hidden;background:var(--card);box-shadow:0 40px 70px -30px rgba(0,0,0,.6);transform:perspective(1300px) rotateY(calc(var(--rx,0)*3.5deg)) rotateX(calc(var(--ry,0)*-3.5deg));transition:transform .6s cubic-bezier(.2,.7,.2,1)}
-.pw-bar{display:flex;align-items:center;gap:6px;padding:.6rem .9rem;border-bottom:1px solid var(--line);font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:var(--lmut)}.pw-bar i{width:8px;height:8px;border-radius:50%;background:var(--line)}.pw-bar span{margin-left:.6rem}
-.pw-view{position:relative;aspect-ratio:16/10;overflow:hidden;background:#e9e4da;--max:1840}
-.pw-scroll{position:absolute;left:0;top:0;width:100%;height:100%;transform:translateY(calc(var(--go,0)*var(--max)*var(--s,.5)*-1px));transition:transform 1.4s cubic-bezier(.3,0,.2,1)}
-.pw-view iframe{position:absolute;left:50%;top:0;width:1280px;height:2640px;margin-left:-640px;border:0;pointer-events:none;transform-origin:50% 0;transform:scale(calc(var(--s,.5)*var(--z,1)));transition:transform 1.2s cubic-bezier(.2,.7,.2,1)}
-.pw-view video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.pw-card:hover .pw-scroll,.pw-card.live .pw-scroll{--go:1;transition-duration:9s;transition-timing-function:cubic-bezier(.45,0,.3,1)}
-.pw-card:hover .pw-view{--z:1.04}
-.pw-over{position:absolute;inset:0;z-index:4;display:grid;place-items:center;pointer-events:none;opacity:0;background:rgba(11,12,15,.34);transition:opacity .5s}
-.pw-over span{padding:1rem 1.7rem;border-radius:999px;background:var(--cr);color:#111;font-weight:600;transform:translateY(14px) scale(.92);transition:transform .6s cubic-bezier(.2,.7,.2,1)}
-.pw-card:hover .pw-over{opacity:1}.pw-card:hover .pw-over span{transform:none}
-.pw-hit{position:absolute;inset:0;z-index:5}.pw-hit:focus-visible{outline:2px solid var(--gold);outline-offset:-5px}
-#portfolio .fine{margin-top:clamp(3.5rem,7vw,6rem);color:var(--lmut)}#portfolio .own{border-color:var(--gd)}#portfolio .own p{color:var(--lmut)}
-.pw-curtain{position:fixed;inset:0;z-index:9999;display:grid;place-content:center;text-align:center;background:var(--b,#111);color:var(--a,#e4c38b);clip-path:circle(0 at var(--x,50%) var(--y,50%));visibility:hidden;pointer-events:none;transition:clip-path 1.1s cubic-bezier(.76,0,.24,1),visibility 0s 1.1s}
-.pw-curtain.on{clip-path:circle(150vmax at var(--x,50%) var(--y,50%));visibility:visible;pointer-events:auto;transition:clip-path 1.1s cubic-bezier(.76,0,.24,1)}
-.pw-cs small{display:block;font-size:.78rem;letter-spacing:.24em;text-transform:uppercase;opacity:0;transition:opacity .6s .55s}
-.pw-cs strong{display:block;margin-top:.8rem;font:400 clamp(3rem,12vw,9.5rem)/1 var(--serif);letter-spacing:-.04em;opacity:0;transform:translateY(46px);transition:opacity .7s .45s,transform .9s .45s cubic-bezier(.2,.7,.2,1)}
-.pw-curtain.on small{opacity:.8}.pw-curtain.on strong{opacity:1;transform:none}
-@media(min-width:861px){.pw-in{flex-direction:row}.pw-info{flex:0 0 36%}.pw-stage{flex:1;min-width:0}.pw-card:nth-child(even) .pw-in{flex-direction:row-reverse}}
-@media(min-width:861px) and (min-height:720px){.pw-list{gap:clamp(4rem,24vh,12rem)}.pw-card{position:sticky;top:calc(88px + var(--i)*14px)}}
-@media(max-width:860px){.pw-stage{order:-1}.pw-count{display:none}.pw-over,.pw-stage::after{display:none}.pw-in{border-radius:24px}}
-@media(prefers-reduced-motion:reduce){.pw::after,.pw-orb,.pw-demo::before{animation:none}.pw-scroll,.pw-view iframe,.pw-frame,.pw-curtain,.pw-cs *,.pw-over,.pw-over span{transition:none!important}.pw-card:hover .pw-scroll{--go:0}}
+/* Portfolio: drie premium projecten */
+.cards{counter-reset:p;gap:1.6rem;align-items:stretch}
+.pcard{counter-increment:p;display:flex;flex-direction:column;position:relative}
+.pcard .portfolio-thumb{min-height:330px;transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+.pcard:hover .portfolio-thumb{transform:scale(.985)}
+.pcard .portfolio-thumb::before{content:"0" counter(p);position:absolute;left:19px;bottom:8px;font:500 4.2rem/1 var(--serif);color:transparent;-webkit-text-stroke:1px var(--thumb-accent);opacity:.55;z-index:-1}
+.pcard .pbody{flex:1;min-height:0}
+@media(max-width:980px){.cards{grid-template-columns:1fr;max-width:640px;margin-inline:auto}.pcard .portfolio-thumb{min-height:290px}}
 </style>
 <noscript><style>.rv,.hero h1,.hero .sub,.cta{opacity:1!important;transform:none!important}
-/* Uitgebreide portfolio met zes doorklikbare demo’s */
+/* Uitgebreide portfolio met drie doorklikbare demo’s */
+.cards{grid-template-columns:repeat(3,minmax(0,1fr))}
+.portfolio-thumb{display:flex;flex-direction:column;min-height:250px;margin:12px;border-radius:13px;padding:17px 19px;background:var(--thumb-bg);color:var(--thumb-fg);text-decoration:none;overflow:hidden;position:relative;isolation:isolate}
+.portfolio-thumb::after{content:"";position:absolute;width:220px;height:220px;border:1px solid var(--thumb-accent);border-radius:50%;right:-72px;bottom:-80px;opacity:.5;z-index:-1;box-shadow:0 0 0 35px color-mix(in srgb,var(--thumb-accent) 9%,transparent),0 0 0 75px color-mix(in srgb,var(--thumb-accent) 5%,transparent)}
+.thumb-top{display:flex;justify-content:space-between;gap:10px;align-items:center;font-size:.56rem;letter-spacing:.13em}.thumb-top span{opacity:.55}.thumb-hero{margin:auto 0;display:flex;flex-direction:column;gap:12px;align-items:flex-start}.thumb-eyebrow{font-size:.56rem;letter-spacing:.19em;color:var(--thumb-accent)}.thumb-hero strong{font:500 clamp(1.5rem,2.4vw,2.2rem)/1.08 var(--serif);max-width:12ch}.thumb-pill{border:1px solid var(--thumb-accent);color:var(--thumb-accent);border-radius:30px;padding:7px 11px;font-size:.55rem;letter-spacing:.09em}.pcard .pbody{display:flex;flex-direction:column;align-items:flex-start;min-height:238px}.pcard .pbody p{flex:1}.pcard .demo{margin-top:18px}.portfolio-thumb:focus-visible{outline:3px solid var(--gold)}
+@media(max-width:900px){.cards{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:620px){.cards{grid-template-columns:1fr}.portfolio-thumb{min-height:270px}}
 </style></noscript>
 </head>
 <body>
@@ -320,7 +290,7 @@ header{transition:background .3s,box-shadow .3s}header.scrolled{background:rgba(
  <div class="wrap">
   <h2 class="sec-h rv">Eén studio, één duidelijke visie.</h2>
   <div class="about">
-   <div class="studio rv"><h3>VEYRO Designs</h3><p>Een onafhankelijk webdesignstudio voor kappers, barbershops en lokale ondernemers. Wij ontwerpen en bouwen websites die er verzorgd uitzien, snel laden en klanten naar jouw deur brengen.</p><ul class="facts"><li><b>6</b><span>demo-concepten</span></li><li><b>3</b><span>heldere pakketten</span></li><li><b>1</b><span>vast aanspreekpunt</span></li></ul></div>
+   <div class="studio rv"><h3>VEYRO Designs</h3><p>Een onafhankelijk webdesignstudio voor kappers, barbershops en lokale ondernemers. Wij ontwerpen en bouwen websites die er verzorgd uitzien, snel laden en klanten naar jouw deur brengen.</p><ul class="facts"><li><b>3</b><span>demo-concepten</span></li><li><b>3</b><span>heldere pakketten</span></li><li><b>1</b><span>vast aanspreekpunt</span></li></ul></div>
    <div class="pillars rv">
     <div><h3>AI-tools als hulpmiddel</h3><p>We gebruiken slimme AI-tools om sneller te werken en meer ideeën te verkennen, zodat jij sneller resultaat ziet.</p></div>
     <div><h3>Eigen ontwerp</h3><p>Elke website wordt door ons zelf vormgegeven en afgewerkt. Geen kant-en-klaar sjabloon, maar een stijl die bij jouw zaak past.</p></div>
@@ -342,68 +312,16 @@ header{transition:background .3s,box-shadow .3s}header.scrolled{background:rgba(
  </div>
 </section>
 
-<section class="light pw" id="portfolio">
- <div class="pw-wrap">
-  <div class="pw-head"><p class="pw-eyebrow pw-fade">Portfolio — 2026</p>
-   <h2 class="pw-title"><span class="pw-w"><span>Werk</span></span> <span class="pw-w"><span>dat</span></span> <span class="pw-w"><span><em>beweegt</em>.</span></span></h2>
-   <div class="pw-sub"><p class="pw-lead pw-fade">Ontdek zes verschillende websiteconcepten. Klik op een project om een uitgebreide voorbeeldwebsite te bekijken. Dit zijn geen bestaande klanten.</p><p class="pw-count pw-fade"><b>06</b><span>demo-websites<br>met live voorbeeld</span></p></div></div>
-  <div class="pw-list">
-<article class="pw-card" data-name="Noir Barber" data-bg="#111111" data-ac="#e4c38b" style="--i:0;--bg:#111111;--ac:#e4c38b">
-<div class="pw-in"><span class="pw-dim"></span>
-<div class="pw-info"><div class="pw-top"><span class="pw-no">01<small>/06</small></span><span class="pw-cat">Barbershop</span></div>
-<div><h3>Noir Barber</h3><p class="pw-line">Precision in every detail.</p><p class="pw-style">Donker, strak en premium</p><p class="pw-desc">Een premium barbershopconcept met diensten, openingstijden en een duidelijke route naar reserveren.</p></div>
-<div class="pw-foot"><span class="pw-demo">Demo · fictief concept</span><a class="pw-btn" href="demos/barbershop.html">Bekijk demo <i>↗</i></a></div></div>
-<div class="pw-stage"><span class="pw-orb o1"></span><span class="pw-orb o2"></span>
-<div class="pw-par"><div class="pw-frame"><div class="pw-bar"><i></i><i></i><i></i><span>Live voorbeeld</span></div><div class="pw-view" data-key="barbershop"><div class="pw-scroll"><iframe data-src="demos/barbershop.html" title="Voorbeeld van Noir Barber" tabindex="-1" aria-hidden="true" scrolling="no"></iframe></div></div></div></div>
-<div class="pw-over"><span>Bekijk demo ↗</span></div><a class="pw-hit" href="demos/barbershop.html" aria-label="Bekijk demo Noir Barber"></a></div>
-</div></article>
-<article class="pw-card" data-name="Atelier Hair" data-bg="#f2e8dc" data-ac="#503b32" style="--i:1;--bg:#f2e8dc;--ac:#503b32">
-<div class="pw-in"><span class="pw-dim"></span>
-<div class="pw-info"><div class="pw-top"><span class="pw-no">02<small>/06</small></span><span class="pw-cat">Kapsalon</span></div>
-<div><h3>Atelier Hair</h3><p class="pw-line">Your hair, your statement.</p><p class="pw-style">Zacht, elegant en editorial</p><p class="pw-desc">Een verfijnd salonconcept met een elegante uitstraling en ruimte voor een lookbook.</p></div>
-<div class="pw-foot"><span class="pw-demo">Demo · fictief concept</span><a class="pw-btn" href="demos/kapsalon.html">Bekijk demo <i>↗</i></a></div></div>
-<div class="pw-stage"><span class="pw-orb o1"></span><span class="pw-orb o2"></span>
-<div class="pw-par"><div class="pw-frame"><div class="pw-bar"><i></i><i></i><i></i><span>Live voorbeeld</span></div><div class="pw-view" data-key="kapsalon"><div class="pw-scroll"><iframe data-src="demos/kapsalon.html" title="Voorbeeld van Atelier Hair" tabindex="-1" aria-hidden="true" scrolling="no"></iframe></div></div></div></div>
-<div class="pw-over"><span>Bekijk demo ↗</span></div><a class="pw-hit" href="demos/kapsalon.html" aria-label="Bekijk demo Atelier Hair"></a></div>
-</div></article>
-<article class="pw-card" data-name="Ember Table" data-bg="#201913" data-ac="#d8ad73" style="--i:2;--bg:#201913;--ac:#d8ad73">
-<div class="pw-in"><span class="pw-dim"></span>
-<div class="pw-info"><div class="pw-top"><span class="pw-no">03<small>/06</small></span><span class="pw-cat">Restaurant</span></div>
-<div><h3>Ember Table</h3><p class="pw-line">An evening worth remembering.</p><p class="pw-style">Warm, gastronomisch en sfeervol</p><p class="pw-desc">Een sfeervolle restaurantsite met menukaart, sfeerbeelden en reserveringsinformatie.</p></div>
-<div class="pw-foot"><span class="pw-demo">Demo · fictief concept</span><a class="pw-btn" href="demos/restaurant.html">Bekijk demo <i>↗</i></a></div></div>
-<div class="pw-stage"><span class="pw-orb o1"></span><span class="pw-orb o2"></span>
-<div class="pw-par"><div class="pw-frame"><div class="pw-bar"><i></i><i></i><i></i><span>Live voorbeeld</span></div><div class="pw-view" data-key="restaurant"><div class="pw-scroll"><iframe data-src="demos/restaurant.html" title="Voorbeeld van Ember Table" tabindex="-1" aria-hidden="true" scrolling="no"></iframe></div></div></div></div>
-<div class="pw-over"><span>Bekijk demo ↗</span></div><a class="pw-hit" href="demos/restaurant.html" aria-label="Bekijk demo Ember Table"></a></div>
-</div></article>
-<article class="pw-card" data-name="Form Coaching" data-bg="#111b20" data-ac="#b9f264" style="--i:3;--bg:#111b20;--ac:#b9f264">
-<div class="pw-in"><span class="pw-dim"></span>
-<div class="pw-info"><div class="pw-top"><span class="pw-no">04<small>/06</small></span><span class="pw-cat">Personal trainer</span></div>
-<div><h3>Form Coaching</h3><p class="pw-line">Build strength. Find balance.</p><p class="pw-style">Sportief, energiek en modern</p><p class="pw-desc">Een krachtige coachesite met trajecten, trainingsfilosofie en een intake-aanvraag.</p></div>
-<div class="pw-foot"><span class="pw-demo">Demo · fictief concept</span><a class="pw-btn" href="demos/personal-trainer.html">Bekijk demo <i>↗</i></a></div></div>
-<div class="pw-stage"><span class="pw-orb o1"></span><span class="pw-orb o2"></span>
-<div class="pw-par"><div class="pw-frame"><div class="pw-bar"><i></i><i></i><i></i><span>Live voorbeeld</span></div><div class="pw-view" data-key="personal-trainer"><div class="pw-scroll"><iframe data-src="demos/personal-trainer.html" title="Voorbeeld van Form Coaching" tabindex="-1" aria-hidden="true" scrolling="no"></iframe></div></div></div></div>
-<div class="pw-over"><span>Bekijk demo ↗</span></div><a class="pw-hit" href="demos/personal-trainer.html" aria-label="Bekijk demo Form Coaching"></a></div>
-</div></article>
-<article class="pw-card" data-name="Obsidian Auto" data-bg="#0c1118" data-ac="#a9c1d2" style="--i:4;--bg:#0c1118;--ac:#a9c1d2">
-<div class="pw-in"><span class="pw-dim"></span>
-<div class="pw-info"><div class="pw-top"><span class="pw-no">05<small>/06</small></span><span class="pw-cat">Autodetailing</span></div>
-<div><h3>Obsidian Auto</h3><p class="pw-line">Every finish tells a story.</p><p class="pw-style">Donker, technisch en exclusief</p><p class="pw-desc">Een hoogwaardige detailingwebsite met behandelingen en een heldere offerte-aanvraag.</p></div>
-<div class="pw-foot"><span class="pw-demo">Demo · fictief concept</span><a class="pw-btn" href="demos/autodetailing.html">Bekijk demo <i>↗</i></a></div></div>
-<div class="pw-stage"><span class="pw-orb o1"></span><span class="pw-orb o2"></span>
-<div class="pw-par"><div class="pw-frame"><div class="pw-bar"><i></i><i></i><i></i><span>Live voorbeeld</span></div><div class="pw-view" data-key="autodetailing"><div class="pw-scroll"><iframe data-src="demos/autodetailing.html" title="Voorbeeld van Obsidian Auto" tabindex="-1" aria-hidden="true" scrolling="no"></iframe></div></div></div></div>
-<div class="pw-over"><span>Bekijk demo ↗</span></div><a class="pw-hit" href="demos/autodetailing.html" aria-label="Bekijk demo Obsidian Auto"></a></div>
-</div></article>
-<article class="pw-card" data-name="Clearspace" data-bg="#edf5f8" data-ac="#146782" style="--i:5;--bg:#edf5f8;--ac:#146782">
-<div class="pw-in"><span class="pw-dim"></span>
-<div class="pw-info"><div class="pw-top"><span class="pw-no">06<small>/06</small></span><span class="pw-cat">Schoonmaakbedrijf</span></div>
-<div><h3>Clearspace</h3><p class="pw-line">A fresh space. A better day.</p><p class="pw-style">Fris, licht en betrouwbaar</p><p class="pw-desc">Een toegankelijke dienstensite met een rustige uitstraling en een offerteknop.</p></div>
-<div class="pw-foot"><span class="pw-demo">Demo · fictief concept</span><a class="pw-btn" href="demos/schoonmaak.html">Bekijk demo <i>↗</i></a></div></div>
-<div class="pw-stage"><span class="pw-orb o1"></span><span class="pw-orb o2"></span>
-<div class="pw-par"><div class="pw-frame"><div class="pw-bar"><i></i><i></i><i></i><span>Live voorbeeld</span></div><div class="pw-view" data-key="schoonmaak"><div class="pw-scroll"><iframe data-src="demos/schoonmaak.html" title="Voorbeeld van Clearspace" tabindex="-1" aria-hidden="true" scrolling="no"></iframe></div></div></div></div>
-<div class="pw-over"><span>Bekijk demo ↗</span></div><a class="pw-hit" href="demos/schoonmaak.html" aria-label="Bekijk demo Clearspace"></a></div>
-</div></article>
-  </div>
-  <p class="fine">Alle zes projecten zijn fictieve ontwerpen ter illustratie. De namen, teksten en afbeeldingen zijn voorbeelden; er zijn nog geen echte klanten of actieve reserveringssystemen.</p><div class="own rv"><div><h3>Jouw project hier?</h3><p>Dit is plek voor jouw website. Vertel ons over je bedrijf en ontvang een vrijblijvende offerte.</p></div><a class="btn btn-gold" href="#contact">Start jouw project</a></div>
+<section class="dark" id="portfolio">
+ <div class="wrap">
+  <h2 class="sec-h rv">Portfolio</h2>
+  <p class="lead rv">Ontdek drie verschillende websiteconcepten. Klik op een project om een uitgebreide voorbeeldwebsite te bekijken. Dit zijn geen bestaande klanten.</p>
+     <div class="cards">
+<article class="pcard rv"><a class="portfolio-thumb" href="demos/barbershop.html" aria-label="Bekijk demo Barbershop" style="--thumb-bg:#111111;--thumb-accent:#e4c38b;--thumb-fg:#f7f1e7"><span class="thumb-top"><b>NOIR BARBER</b><span>MENU &nbsp; · &nbsp; CONTACT</span></span><span class="thumb-hero"><span class="thumb-eyebrow">CONCEPT / BARBERSHOP</span><strong>Precision in every detail.</strong><span class="thumb-pill">ONTDEK MEER ↗</span></span></a><div class="pbody"><span class="tag">Demo · fictief concept</span><h3>Barbershop</h3><p>Donker, strak en premium. Een premium barbershopconcept met diensten, openingstijden en een duidelijke route naar reserveren.</p><a class="btn btn-line demo" href="demos/barbershop.html">Bekijk volledige demo ↗</a></div></article>
+<article class="pcard rv"><a class="portfolio-thumb" href="demos/personal-trainer.html" aria-label="Bekijk demo Personal trainer" style="--thumb-bg:#111b20;--thumb-accent:#b9f264;--thumb-fg:#f4f8f4"><span class="thumb-top"><b>FORM COACHING</b><span>MENU &nbsp; · &nbsp; CONTACT</span></span><span class="thumb-hero"><span class="thumb-eyebrow">CONCEPT / PERSONAL TRAINER</span><strong>Build strength. Find balance.</strong><span class="thumb-pill">ONTDEK MEER ↗</span></span></a><div class="pbody"><span class="tag">Demo · fictief concept</span><h3>Personal trainer</h3><p>Sportief, energiek en modern. Een krachtige coachesite met trajecten, trainingsfilosofie en een intake-aanvraag.</p><a class="btn btn-line demo" href="demos/personal-trainer.html">Bekijk volledige demo ↗</a></div></article>
+<article class="pcard rv"><a class="portfolio-thumb" href="demos/autodetailing.html" aria-label="Bekijk demo Autodetailing" style="--thumb-bg:#0c1118;--thumb-accent:#a9c1d2;--thumb-fg:#eef4f8"><span class="thumb-top"><b>OBSIDIAN AUTO</b><span>MENU &nbsp; · &nbsp; CONTACT</span></span><span class="thumb-hero"><span class="thumb-eyebrow">CONCEPT / AUTODETAILING</span><strong>Every finish tells a story.</strong><span class="thumb-pill">ONTDEK MEER ↗</span></span></a><div class="pbody"><span class="tag">Demo · fictief concept</span><h3>Autodetailing</h3><p>Donker, technisch en exclusief. Een hoogwaardige detailingwebsite met behandelingen en een heldere offerte-aanvraag.</p><a class="btn btn-line demo" href="demos/autodetailing.html">Bekijk volledige demo ↗</a></div></article>
+   </div>
+<p class="fine">Alle drie de projecten zijn fictieve ontwerpen ter illustratie. De namen, teksten en afbeeldingen zijn voorbeelden; er zijn nog geen echte klanten of actieve reserveringssystemen.</p><div class="own rv"><div><h3>Jouw project hier?</h3><p>Dit is plek voor jouw website. Vertel ons over je bedrijf en ontvang een vrijblijvende offerte.</p></div><a class="btn btn-gold" href="#contact">Start jouw project</a></div>
  </div>
 </section>
 
@@ -513,59 +431,6 @@ const CONTACT_EXTRA = {whatsapp:"",instagram:"",telefoon:""}; // whatsapp: 31612
   var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}})},{threshold:.12});
   els.forEach(function(el,i){el.style.transitionDelay=(i%3)*90+'ms';io.observe(el)});
  }else{els.forEach(function(el){el.classList.add('in')})}
-})();
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-<script>
-/* Portfolio: scrollende previews, tilt, ronde overgang en GSAP-animaties (zonder GSAP blijft alles werken) */
-(function(){
- var sec=document.getElementById('portfolio');if(!sec)return;
- /* Eigen video's? Zet per project een pad neer, bijv. "assets/videos/barbershop.mp4". Leeg = geanimeerde preview. */
- var PW_VIDEOS={"barbershop":"","kapsalon":"","restaurant":"","personal-trainer":"","autodetailing":"","schoonmaak":""};
- var rm=matchMedia('(prefers-reduced-motion:reduce)').matches,touch=matchMedia('(hover:none)').matches,views=sec.querySelectorAll('.pw-view'),cards=sec.querySelectorAll('.pw-card');
- function fit(v){v.style.setProperty('--s',(v.clientWidth/1280).toFixed(4))}
- views.forEach(function(v){fit(v);var u=PW_VIDEOS[v.dataset.key];if(u){v.innerHTML='<video src="'+u+'" muted loop playsinline preload="metadata"></video>'}});
- if('ResizeObserver' in window){var ro=new ResizeObserver(function(es){es.forEach(function(e){fit(e.target)})});views.forEach(function(v){ro.observe(v)})}else{addEventListener('resize',function(){views.forEach(fit)})}
- function load(v){var f=v.querySelector('iframe');if(f&&!f.src)f.src=f.dataset.src}
- if('IntersectionObserver' in window){
-  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){load(e.target);io.unobserve(e.target)}})},{rootMargin:'800px 0px'});views.forEach(function(v){io.observe(v)});
-  var lv=new IntersectionObserver(function(es){es.forEach(function(e){var c=e.target,v=c.querySelector('video');
-   if(touch&&!rm)c.classList.toggle('live',e.isIntersecting&&e.intersectionRatio>.55);
-   if(v){if(e.isIntersecting){v.play().catch(function(){})}else v.pause()}})},{threshold:[0,.55]});cards.forEach(function(c){lv.observe(c)});
- }else{views.forEach(load)}
- if(!touch&&!rm){sec.querySelectorAll('.pw-stage').forEach(function(st){var fr=st.querySelector('.pw-frame');
-  st.addEventListener('mousemove',function(e){var r=st.getBoundingClientRect(),x=(e.clientX-r.left)/r.width,y=(e.clientY-r.top)/r.height;
-   fr.style.setProperty('--rx',(x-.5).toFixed(3));fr.style.setProperty('--ry',(y-.5).toFixed(3));st.style.setProperty('--mx',(x*100)+'%');st.style.setProperty('--my',(y*100)+'%')});
-  st.addEventListener('mouseleave',function(){fr.style.setProperty('--rx',0);fr.style.setProperty('--ry',0)})})}
- var cur=document.createElement('div');cur.className='pw-curtain';cur.setAttribute('aria-hidden','true');cur.innerHTML='<div class="pw-cs"><small>Demo · fictief concept</small><strong></strong></div>';document.body.appendChild(cur);
- sec.querySelectorAll('.pw-hit,.pw-btn').forEach(function(a){a.addEventListener('click',function(e){
-  if(rm||e.metaKey||e.ctrlKey||e.shiftKey||e.altKey||e.button)return;
-  e.preventDefault();var c=a.closest('.pw-card');
-  cur.style.setProperty('--b',c.dataset.bg);cur.style.setProperty('--a',c.dataset.ac);
-  cur.style.setProperty('--x',(e.clientX||innerWidth/2)+'px');cur.style.setProperty('--y',(e.clientY||innerHeight/2)+'px');
-  cur.querySelector('strong').textContent=c.dataset.name;cur.classList.add('on');
-  try{sessionStorage.setItem('veyroT',JSON.stringify({n:c.dataset.name,b:c.dataset.bg,a:c.dataset.ac}))}catch(x){}
-  setTimeout(function(){location.href=a.href},1150)})});
- addEventListener('pageshow',function(e){if(e.persisted)cur.classList.remove('on')});
- if(!window.gsap||!window.ScrollTrigger||rm)return;
- gsap.registerPlugin(ScrollTrigger);
- gsap.matchMedia().add({d:'(min-width:861px)',m:'(max-width:860px)'},function(ctx){
-  var d=ctx.conditions.d,list=gsap.utils.toArray('.pw-card');
-  gsap.from('.pw-w>span',{yPercent:115,duration:1.3,ease:'power4.out',stagger:.12,scrollTrigger:{trigger:'.pw-head',start:'top 85%'}});
-  gsap.from('.pw-fade',{y:26,opacity:0,duration:1,stagger:.12,delay:.3,ease:'power3.out',scrollTrigger:{trigger:'.pw-head',start:'top 85%'}});
-  list.forEach(function(card,i){
-   gsap.from(card.querySelector('.pw-in'),{y:100,opacity:0,scale:.95,duration:1.4,ease:'power3.out',scrollTrigger:{trigger:card,start:'top 90%'}});
-   gsap.from(card.querySelectorAll('.pw-info>*'),{y:34,opacity:0,duration:1,stagger:.1,delay:.25,ease:'power3.out',scrollTrigger:{trigger:card,start:'top 82%'}});
-   if(d){
-    gsap.fromTo(card.querySelector('.pw-par'),{y:-28},{y:28,ease:'none',scrollTrigger:{trigger:card,start:'top bottom',end:'bottom top',scrub:.6}});
-    gsap.fromTo(card.querySelectorAll('.pw-orb'),{yPercent:-25},{yPercent:25,ease:'none',scrollTrigger:{trigger:card,start:'top bottom',end:'bottom top',scrub:true}});
-    if(i<list.length-1){gsap.to(card,{scale:.94,ease:'none',scrollTrigger:{trigger:list[i+1],start:'top 88%',end:'top 16%',scrub:true}});
-     gsap.to(card.querySelector('.pw-dim'),{opacity:.4,ease:'none',scrollTrigger:{trigger:list[i+1],start:'top 88%',end:'top 16%',scrub:true}})}
-   }
-  });
-  addEventListener('load',function(){ScrollTrigger.refresh()});
- });
 })();
 </script>
 </body>
